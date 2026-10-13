@@ -1,0 +1,33 @@
+@tailwind base;
+@layer base {
+  /* Fieldsets default to min-width: min-content and would push 360px layouts sideways. */
+  fieldset { min-width: 0; }
+  /* Utility display classes (flex, grid) must not un-hide [hidden] state panels. */
+  [hidden] { display: none !important; }
+  summary::-webkit-details-marker { display: none; }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .tap { @apply min-h-tap min-w-tap; }
+  .panel { @apply rounded border border-slate-200 bg-white shadow-card; }
+  .badge { @apply inline-flex items-center gap-1 rounded-sm border px-2 py-0.5 text-xs font-semibold; }
+  .badge-pending { @apply border-slate-300 bg-slate-100 text-slate-700; }
+  .badge-transit { @apply border-transit-line bg-transit-tint text-transit; }
+  .badge-verified { @apply border-verified-line bg-verified-tint text-verified-dark; }
+  .badge-attention { @apply border-attention-line bg-attention-tint text-attention-dark; }
+  .field { @apply h-12 w-full rounded border border-slate-300 bg-white px-3 text-base text-ink placeholder:text-slate-400 focus:border-verified focus:outline-none focus:ring-2 focus:ring-verified/30; }
+  .label { @apply text-sm font-semibold text-ink; }
+  .hint { @apply text-xs text-slate-600 md:text-sm; }
+  .btn { @apply inline-flex min-h-tap items-center justify-center gap-2 rounded px-4 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-verified; }
+  .btn-primary { @apply btn bg-verified text-white hover:bg-verified-dark; }
+  .btn-secondary { @apply btn border border-slate-300 bg-white text-ink hover:bg-slate-50; }
+  .btn-danger { @apply btn bg-danger text-white hover:bg-red-800; }
+  .icon { @apply h-5 w-5 shrink-0; }
+  .icon-sm { @apply h-4 w-4 shrink-0; }
+  .nav-item { @apply flex min-h-tap items-center gap-3 rounded px-3 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-ink md:justify-center lg:justify-start; }
+  .nav-item[aria-current='page'] { @apply bg-verified-tint text-verified-dark; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-wider text-slate-500; }
+}
