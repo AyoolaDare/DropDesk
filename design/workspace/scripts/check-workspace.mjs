@@ -39,6 +39,7 @@ for (const w of widths) {
     const vis = (el) => { const b = el.getBoundingClientRect(); return b.width > 0 && b.height > 0 && getComputedStyle(el).visibility !== 'hidden' && !el.closest('[inert]') && !el.closest('.sr-only') && !el.classList.contains('sr-only'); };
     const off = [...document.querySelectorAll('main *, header *')].filter(vis)
       .filter((el) => !el.closest('[class*="overflow-x-auto"]'))
+      .filter((el) => el.tagName === 'svg' || !el.closest('svg')) // judge an illustration by its own box, not shapes it crops
       .filter((el) => { const b = el.getBoundingClientRect(); return b.right > vw + 1 || b.left < -1; })
       .slice(0, 4).map((el) => el.tagName + '.' + String(el.className).split(' ').slice(0, 2).join('.'));
     const small = !touch ? [] : [...document.querySelectorAll('main a, main button, main input, header a, header button, header input')].filter(vis)

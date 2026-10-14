@@ -27,6 +27,9 @@
   .btn-quiet { @apply btn bg-white text-ink ring-1 ring-black/10 hover:bg-slate-50 hover:ring-black/20; }
   .btn-ghost { @apply btn text-ink-soft hover:bg-black/[0.04]; }
 
+  /* 2D icon tile: gradient square with a white glyph and a soft inner highlight. */
+  .tile { @apply relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.35),0_6px_14px_-8px_rgb(0_102_82/0.6)]; }
+  .tile-sm { @apply tile h-7 w-7 rounded-lg; }
   .pill { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium; }
   .field { @apply h-12 w-full rounded-xl bg-white px-4 text-base text-ink ring-1 ring-black/10 transition-all duration-200 placeholder:font-light placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-anchor; }
 
