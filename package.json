@@ -1,0 +1,31 @@
+{
+  "name": "dropdesk",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:unit": "tsx --test packages/*/src/**/*.test.ts",
+    "test:db": "tsx --test --test-concurrency=1 apps/api/test/*.test.ts",
+    "test": "npm run test:unit && npm run test:db",
+    "db:migrate": "tsx apps/api/src/db/migrate.ts",
+    "dev": "npm --workspace apps/web run dev",
+    "build": "npm --workspace apps/web run build"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "@types/pg": "8.11.14",
+    "tsx": "4.19.4",
+    "typescript": "5.8.3"
+  },
+  "overrides": {
+    "postcss": "8.5.30",
+    "sharp": "0.35.5"
+  }
+}

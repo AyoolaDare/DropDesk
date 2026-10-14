@@ -1,2 +1,7 @@
 node_modules/
 design/responsive/screenshots/
+design/workspace/screenshots/
+.next/
+.env
+.env.*.local
+*.tsbuildinfo

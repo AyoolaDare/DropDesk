@@ -1,0 +1,3 @@
+{ "name": "@dropdesk/api", "private": true, "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "pg": "8.16.0", "@dropdesk/security": "*", "@dropdesk/contracts": "*" } }
