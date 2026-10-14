@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en-NG">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F7F8F7">
+  <title>Workspace · DropDesk</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="dist/workspace.css">
+</head>
+<body data-loading class="bg-canvas font-sans text-ink antialiased">
+
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden" aria-hidden="true">
+  <defs>
+    <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7l8-4 8 4v10l-8 4-8-4z"/><path d="M4 7l8 4 8-4M12 11v10"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0112 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 004 0"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l9.5 16.5h-19z"/><path d="M12 10v4.5M12 17.5v.01"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h13M17 20l4-4-4-4M21 16H8"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M4 20h16"/></symbol>
+  </defs>
+</svg>
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-white focus:p-3">Skip to content</a>
+
+<!-- STICKY GLASS TOP BAR -->
+<header class="glass sticky top-0 z-30 border-b border-black/5">
+  <div class="mx-auto flex h-16 max-w-[1440px] items-center gap-2 px-4 md:gap-4 md:px-6 lg:px-8">
+    <button type="button" data-open="nav-sheet" class="btn-ghost w-11 px-0 lg:hidden" aria-label="Open menu"><svg class="h-5 w-5"><use href="#i-menu"/></svg></button>
+    <a href="#" class="press flex min-h-[44px] items-center gap-2 rounded-lg">
+      <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-anchor text-white"><svg class="h-4 w-4"><use href="#i-box"/></svg></span>
+      <span class="text-[17px] font-semibold tracking-tight">DropDesk</span>
+    </a>
+    <nav aria-label="Main" class="ml-6 hidden items-center gap-1 lg:flex">
+      <a href="#" aria-current="page" class="press rounded-lg bg-black/[0.04] px-3 py-2 text-sm font-medium">Workspace</a>
+      <a href="#" class="press rounded-lg px-3 py-2 text-sm font-normal text-ink-muted hover:bg-black/[0.04] hover:text-ink">Deliveries</a>
+      <a href="#" class="press rounded-lg px-3 py-2 text-sm font-normal text-ink-muted hover:bg-black/[0.04] hover:text-ink">Riders</a>
+      <a href="#" class="press rounded-lg px-3 py-2 text-sm font-normal text-ink-muted hover:bg-black/[0.04] hover:text-ink">Exceptions</a>
+      <a href="#" class="press rounded-lg px-3 py-2 text-sm font-normal text-ink-muted hover:bg-black/[0.04] hover:text-ink">Reports</a>
+    </nav>
+    <label class="relative ml-auto hidden md:block md:w-64 xl:w-80">
+      <span class="sr-only">Search</span>
+      <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted"><use href="#i-search"/></svg>
+      <input type="search" placeholder="Job ID, recipient, postcode" class="h-11 w-full rounded-xl bg-black/[0.04] pl-9 pr-3 text-sm placeholder:font-light placeholder:text-ink-muted focus:bg-white focus:outline-none focus:ring-2 focus:ring-anchor">
+    </label>
+    <button type="button" class="btn-ghost ml-auto w-11 px-0 md:hidden" aria-label="Search"><svg class="h-5 w-5"><use href="#i-search"/></svg></button>
+    <button type="button" class="btn-ghost relative w-11 px-0" aria-label="Notifications, 2 unread">
+      <svg class="h-5 w-5"><use href="#i-bell"/></svg>
+      <span class="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-alert ring-2 ring-white"></span>
+    </button>
+    <button type="button" class="press hidden h-11 w-11 items-center justify-center rounded-full md:flex" aria-label="Account: Bisi Okafor"><span class="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-xs font-semibold text-white">BO</span></button>
+  </div>
+</header>
+
+<main id="main" class="mx-auto max-w-[1440px] px-4 pb-16 pt-6 md:px-6 md:pt-8 lg:px-8">
+
+  <!-- PAGE HEADER -->
+  <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <div>
+      <p class="text-sm font-light text-ink-muted">Wednesday 14 October · 2:41 PM WAT · Lekki zone</p>
+      <h1 class="mt-1 text-[28px] font-semibold leading-tight tracking-tight md:text-[32px]">Good afternoon, Bisi</h1>
+    </div>
+    <div class="flex gap-2">
+      <button type="button" class="btn-quiet hidden md:inline-flex"><svg class="h-4 w-4"><use href="#i-download"/></svg>Export</button>
+      <a href="#" class="btn-cta flex-1 md:flex-none"><svg class="h-4 w-4"><use href="#i-plus"/></svg>Create New Delivery Job</a>
+    </div>
+  </div>
+
+  <!-- EXCEPTION BANNERS: calm, red-bordered, always icon + words -->
+  <section aria-label="Exceptions needing action" class="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
+    <div role="alert" data-banner class="flex gap-3 rounded-2xl border border-alert-line bg-alert-soft/60 p-4">
+      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-alert ring-1 ring-alert-line"><svg class="h-[18px] w-[18px]"><use href="#i-alert"/></svg></span>
+      <div class="min-w-0 flex-1">
+        <p class="text-sm font-semibold tracking-tight">Rider no-show · <span class="font-mono text-[13px] font-medium">DD-24817</span></p>
+        <p class="mt-0.5 text-sm font-light leading-relaxed text-ink-soft">Tunde A. hasn't reached the pickup. Parcel ready since 1:30 PM.</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <button type="button" data-open="job-sheet" data-job="DD-24817" class="btn-quiet px-3"><svg class="h-4 w-4"><use href="#i-swap"/></svg>Reassign rider</button>
+          <button type="button" class="btn-ghost px-3"><svg class="h-4 w-4"><use href="#i-phone"/></svg>Call Tunde</button>
+        </div>
+      </div>
+      <button type="button" data-dismiss class="btn-ghost -mr-2 -mt-2 w-11 shrink-0 px-0" aria-label="Dismiss for now"><svg class="h-4 w-4"><use href="#i-x"/></svg></button>
+    </div>
+    <div role="alert" data-banner class="flex gap-3 rounded-2xl border border-alert-line bg-alert-soft/60 p-4">
+      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white text-alert ring-1 ring-alert-line"><svg class="h-[18px] w-[18px]"><use href="#i-pin"/></svg></span>
+      <div class="min-w-0 flex-1">
+        <p class="text-sm font-semibold tracking-tight">Address incomplete · <span class="font-mono text-[13px] font-medium">DD-24833</span></p>
+        <p class="mt-0.5 text-sm font-light leading-relaxed text-ink-soft">No landmark and the postcode isn't confirmed. A rider can't be offered this job yet.</p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <a href="#resolver" class="btn-quiet px-3"><svg class="h-4 w-4"><use href="#i-pin"/></svg>Complete address</a>
+        </div>
+      </div>
+      <button type="button" data-dismiss class="btn-ghost -mr-2 -mt-2 w-11 shrink-0 px-0" aria-label="Dismiss for now"><svg class="h-4 w-4"><use href="#i-x"/></svg></button>
+    </div>
+  </section>
+
+  <!-- BENTO GRID -->
+  <div class="mt-6 grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-12">
+
+    <!-- HERO: TODAY'S PIPELINE -->
+    <section aria-labelledby="pipe-t" class="bento flex flex-col lg:col-span-8">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <div>
+          <h2 id="pipe-t" class="bento-title">Today's delivery pipeline</h2>
+          <p class="bento-sub">23 jobs · 4:00 PM is the next pickup wave</p>
+        </div>
+        <a href="#" class="press rounded-lg text-sm font-medium text-anchor hover:text-anchor-dark">All deliveries</a>
+      </div>
+
+      <div class="stack mt-5 lg:mb-6">
+        <div class="skeleton" aria-hidden="true">
+          <div class="sk h-3 w-full rounded-full"></div>
+          <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <div class="space-y-3"><div class="sk h-4 w-28"></div><div class="sk h-[68px]"></div><div class="sk h-[68px]"></div></div>
+            <div class="space-y-3"><div class="sk h-4 w-24"></div><div class="sk h-[68px]"></div><div class="sk h-[68px]"></div></div>
+            <div class="hidden space-y-3 md:block"><div class="sk h-4 w-32"></div><div class="sk h-[68px]"></div><div class="sk h-[68px]"></div></div>
+            <div class="hidden space-y-3 md:block"><div class="sk h-4 w-20"></div><div class="sk h-[68px]"></div><div class="sk h-[68px]"></div></div>
+          </div>
+        </div>
+
+        <div class="real">
+          <!-- Stacked share bar: 2px surface gaps, rounded ends, labelled below -->
+          <div class="flex h-3 w-full gap-0.5" role="img" aria-label="23 jobs: 6 pending pickup, 4 in transit, 2 need attention, 11 delivered">
+            <span title="Pending pickup: 6 of 23" class="rounded-l-full bg-stage-pending" style="flex: 6"></span>
+            <span title="In transit: 4 of 23" class="bg-stage-transit" style="flex: 4"></span>
+            <span title="Attention needed: 2 of 23" class="bg-stage-attention" style="flex: 2"></span>
+            <span title="Delivered: 11 of 23" class="rounded-r-full bg-stage-delivered" style="flex: 11"></span>
+          </div>
+
+          <ol class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-x-6 xl:grid-cols-4 xl:gap-4">
+            <li class="relative flex flex-col gap-3">
+              <div class="flex items-baseline justify-between gap-2 pr-4 xl:flex-col xl:items-start xl:gap-1 xl:pr-0">
+                <h3 class="flex items-center gap-2 text-sm font-medium"><span class="h-2.5 w-2.5 rounded-full bg-stage-pending"></span><svg class="h-4 w-4 text-ink-muted"><use href="#i-clock"/></svg>Pending pickup</h3>
+                <span class="text-2xl font-semibold tabular-nums tracking-tight xl:text-[28px]">6</span>
+              </div>
+              <button type="button" data-open="job-sheet" data-job="DD-24822" data-name="Funmi Adeyemi" data-area="5 Awolowo Rd, Ikoyi" data-status="Rider en route to pickup" class="press-card rounded-xl bg-canvas p-3 text-left ring-1 ring-black/5">
+                <span class="flex justify-between font-mono text-xs text-ink-muted">DD-24822<span>3:00 PM</span></span>
+                <span class="mt-1 block text-sm font-medium">Funmi Adeyemi</span>
+                <span class="block truncate text-xs font-light text-ink-muted">Awolowo Rd, Ikoyi · ₦2,800</span>
+              </button>
+              <button type="button" data-open="job-sheet" data-job="DD-24825" data-name="Ibrahim Bello" data-area="21 Otigba St, Computer Village, Ikeja" data-status="Awaiting rider" class="press-card rounded-xl bg-canvas p-3 text-left ring-1 ring-black/5">
+                <span class="flex justify-between font-mono text-xs text-ink-muted">DD-24825<span>4:00 PM</span></span>
+                <span class="mt-1 block text-sm font-medium">Ibrahim Bello</span>
+                <span class="block truncate text-xs font-light text-ink-muted">Computer Village, Ikeja · ₦5,200</span>
+              </button>
+              <a href="#" class="press self-start rounded-lg text-xs font-medium text-ink-muted hover:text-ink">+ 4 more</a>
+              <svg class="absolute -right-3 top-2 hidden h-4 w-4 text-slate-300 xl:block" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </li>
+            <li class="relative flex flex-col gap-3">
+              <div class="flex items-baseline justify-between gap-2 pr-4 xl:flex-col xl:items-start xl:gap-1 xl:pr-0">
+                <h3 class="flex items-center gap-2 text-sm font-medium"><span class="h-2.5 w-2.5 rounded-full bg-stage-transit"></span><svg class="h-4 w-4 text-ink-muted"><use href="#i-truck"/></svg>In transit</h3>
+                <span class="text-2xl font-semibold tabular-nums tracking-tight xl:text-[28px]">4</span>
+              </div>
+              <button type="button" data-open="job-sheet" data-job="DD-24811" data-name="Ngozi Eze" data-area="48 Herbert Macaulay Way, Yaba" data-status="In transit · arriving soon" class="press-card rounded-xl bg-canvas p-3 text-left ring-1 ring-black/5">
+                <span class="flex justify-between font-mono text-xs text-ink-muted">DD-24811<span>~3:05 PM</span></span>
+                <span class="mt-1 block text-sm font-medium">Ngozi Eze</span>
+                <span class="block truncate text-xs font-light text-ink-muted">Herbert Macaulay Way, Yaba · ₦4,500</span>
+              </button>
+              <button type="button" data-open="job-sheet" data-job="DD-24861" data-name="Kemi Ojo" data-area="27 Adeniran Ogunsanya St, Surulere" data-status="In transit" class="press-card rounded-xl bg-canvas p-3 text-left ring-1 ring-black/5">
+                <span class="flex justify-between font-mono text-xs text-ink-muted">DD-24861<span>3:00–5:00</span></span>
+                <span class="mt-1 block text-sm font-medium">Kemi Ojo</span>
+                <span class="block truncate text-xs font-light text-ink-muted">Adeniran Ogunsanya, Surulere · ₦5,500</span>
+              </button>
+              <a href="#" class="press self-start rounded-lg text-xs font-medium text-ink-muted hover:text-ink">+ 2 more</a>
+              <svg class="absolute -right-3 top-2 hidden h-4 w-4 text-slate-300 xl:block" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </li>
+            <li class="relative flex flex-col gap-3">
+              <div class="flex items-baseline justify-between gap-2 pr-4 xl:flex-col xl:items-start xl:gap-1 xl:pr-0">
+                <h3 class="flex items-center gap-2 text-sm font-medium"><span class="h-2.5 w-2.5 rounded-full bg-stage-attention"></span><svg class="h-4 w-4 text-stage-attention"><use href="#i-alert"/></svg>Attention needed</h3>
+                <span class="text-2xl font-semibold tabular-nums tracking-tight xl:text-[28px]">2</span>
+              </div>
+              <button type="button" data-open="job-sheet" data-job="DD-24817" data-name="Chiamaka Obi" data-area="12 Admiralty Way, Lekki Phase 1" data-status="Rider no-show at pickup" class="press-card rounded-xl bg-alert-soft/60 p-3 text-left ring-1 ring-alert-line">
+                <span class="flex justify-between font-mono text-xs text-ink-muted">DD-24817<span class="font-sans font-medium text-alert">No-show</span></span>
+                <span class="mt-1 block text-sm font-medium">Chiamaka Obi</span>
+                <span class="block truncate text-xs font-light text-ink-muted">Admiralty Way, Lekki Ph 1 · ₦3,500</span>
+              </button>
+              <button type="button" data-open="job-sheet" data-job="DD-24833" data-name="Emeka Nwosu" data-area="Diamond Estate, Sangotedo" data-status="Address incomplete" class="press-card rounded-xl bg-alert-soft/60 p-3 text-left ring-1 ring-alert-line">
+                <span class="flex justify-between font-mono text-xs text-ink-muted">DD-24833<span class="font-sans font-medium text-alert">Address</span></span>
+                <span class="mt-1 block text-sm font-medium">Emeka Nwosu</span>
+                <span class="block truncate text-xs font-light text-ink-muted">Diamond Estate, Sangotedo · ₦4,000</span>
+              </button>
+              <svg class="absolute -right-3 top-2 hidden h-4 w-4 text-slate-300 xl:block" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </li>
+            <li class="flex flex-col gap-3">
+              <div class="flex items-baseline justify-between gap-2 pr-4 xl:flex-col xl:items-start xl:gap-1 xl:pr-0">
+                <h3 class="flex items-center gap-2 text-sm font-medium"><span class="h-2.5 w-2.5 rounded-full bg-stage-delivered"></span><svg class="h-4 w-4 text-anchor"><use href="#i-check-circle"/></svg>Delivered</h3>
+                <span class="text-2xl font-semibold tabular-nums tracking-tight xl:text-[28px]">11</span>
+              </div>
+              <ul class="divide-y divide-black/5 rounded-xl bg-canvas ring-1 ring-black/5">
+                <li class="flex items-center gap-2 px-3 py-2.5 text-sm"><svg class="h-3.5 w-3.5 text-anchor"><use href="#i-check"/></svg><span class="min-w-0 flex-1 truncate">Aisha Lawal</span><span class="font-mono text-xs text-ink-muted">1:14</span></li>
+                <li class="flex items-center gap-2 px-3 py-2.5 text-sm"><svg class="h-3.5 w-3.5 text-anchor"><use href="#i-check"/></svg><span class="min-w-0 flex-1 truncate">Yemi Alade</span><span class="font-mono text-xs text-ink-muted">12:52</span></li>
+                <li class="flex items-center gap-2 px-3 py-2.5 text-sm"><svg class="h-3.5 w-3.5 text-anchor"><use href="#i-check"/></svg><span class="min-w-0 flex-1 truncate">Kunle Ade</span><span class="font-mono text-xs text-ink-muted">12:31</span></li>
+              </ul>
+              <a href="#" class="press self-start rounded-lg text-xs font-medium text-ink-muted hover:text-ink">+ 8 more</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <dl class="mt-6 grid grid-cols-2 gap-4 border-t border-black/5 pt-5 md:grid-cols-4 lg:mt-auto">
+        <div><dt class="text-xs font-light text-ink-muted">Delivery charges today</dt><dd class="ld mt-1 inline-block text-lg font-semibold tabular-nums tracking-tight">₦78,500</dd></div>
+        <div><dt class="text-xs font-light text-ink-muted">Average charge</dt><dd class="ld mt-1 inline-block text-lg font-semibold tabular-nums tracking-tight">₦3,413</dd></div>
+        <div><dt class="text-xs font-light text-ink-muted">Avg pickup wait</dt><dd class="ld mt-1 inline-block text-lg font-semibold tabular-nums tracking-tight">14 min</dd></div>
+        <div><dt class="text-xs font-light text-ink-muted">Riders on the road</dt><dd class="ld mt-1 inline-block text-lg font-semibold tabular-nums tracking-tight">3 of 8</dd></div>
+      </dl>
+    </section>
+
+    <!-- KPI WIDGETS: faint anchor glow behind the group only -->
+    <section aria-label="Key metrics" class="relative lg:col-span-4">
+      <div class="pointer-events-none absolute -inset-4 -z-0 bg-kpi-glow blur-2xl" aria-hidden="true"></div>
+      <div class="relative grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-1 lg:gap-4">
+
+        <article class="bento press-card stack">
+          <div class="skeleton space-y-3" aria-hidden="true"><div class="sk h-4 w-36"></div><div class="sk h-10 w-28"></div><div class="sk h-8 w-full"></div></div>
+          <div class="real">
+            <h2 class="text-sm font-normal text-ink-muted">On-time delivery rate</h2>
+            <div class="mt-2 flex items-end justify-between gap-4">
+              <p class="text-[40px] font-bold leading-none tracking-tighter tabular-nums">92.6<span class="text-2xl font-semibold text-ink-muted">%</span></p>
+              <!-- Single-series daily bars, last 7 days; hover shows the day -->
+              <div class="flex h-9 items-end gap-1" role="img" aria-label="Daily on-time rate, last 7 days: 100, 80, 100, 100, 75, 100, 92 percent">
+                <span title="Wed 8 Oct · 100% (3/3)" class="w-2 rounded-t-[3px] bg-anchor/30 transition-colors hover:bg-anchor" style="height: 100%"></span>
+                <span title="Thu 9 Oct · 80% (4/5)" class="w-2 rounded-t-[3px] bg-anchor/30 transition-colors hover:bg-anchor" style="height: 80%"></span>
+                <span title="Fri 10 Oct · 100% (4/4)" class="w-2 rounded-t-[3px] bg-anchor/30 transition-colors hover:bg-anchor" style="height: 100%"></span>
+                <span title="Sat 11 Oct · 100% (2/2)" class="w-2 rounded-t-[3px] bg-anchor/30 transition-colors hover:bg-anchor" style="height: 100%"></span>
+                <span title="Mon 13 Oct · 75% (3/4)" class="w-2 rounded-t-[3px] bg-anchor/30 transition-colors hover:bg-anchor" style="height: 75%"></span>
+                <span title="Tue 14 Oct · 100% (2/2)" class="w-2 rounded-t-[3px] bg-anchor/30 transition-colors hover:bg-anchor" style="height: 100%"></span>
+                <span title="Today · 92% (7/7 so far)" class="w-2 rounded-t-[3px] bg-anchor" style="height: 92%"></span>
+              </div>
+            </div>
+            <p class="mt-3 text-xs font-light leading-relaxed text-ink-muted">25 of 27 accepted windows · last 7 days</p>
+          </div>
+        </article>
+
+        <article class="bento press-card stack">
+          <div class="skeleton space-y-3" aria-hidden="true"><div class="sk h-4 w-40"></div><div class="sk h-10 w-28"></div><div class="sk h-2 w-full"></div></div>
+          <div class="real">
+            <h2 class="text-sm font-normal text-ink-muted">Accepted-job completion</h2>
+            <p class="mt-2 text-[40px] font-bold leading-none tracking-tighter tabular-nums">95.8<span class="text-2xl font-semibold text-ink-muted">%</span></p>
+            <div class="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-slate-100" role="img" aria-label="23 of 24 accepted jobs completed">
+              <div class="h-full rounded-full bg-anchor" style="width: 95.8%"></div>
+            </div>
+            <p class="mt-3 text-xs font-light leading-relaxed text-ink-muted">23 of 24 accepted jobs completed · 30 days</p>
+          </div>
+        </article>
+
+        <article class="bento press-card stack">
+          <div class="skeleton space-y-3" aria-hidden="true"><div class="sk h-4 w-28"></div><div class="sk h-10 w-12"></div><div class="sk h-4 w-full"></div></div>
+          <div class="real">
+            <div class="flex items-center justify-between">
+              <h2 class="text-sm font-normal text-ink-muted">Active exceptions</h2>
+              <span class="pill bg-alert-soft text-alert ring-1 ring-alert-line"><svg class="h-3 w-3"><use href="#i-alert"/></svg>Act now</span>
+            </div>
+            <p class="mt-2 text-[40px] font-bold leading-none tracking-tighter tabular-nums">2</p>
+            <ul class="mt-3 space-y-1 text-xs font-light text-ink-soft">
+              <li class="flex justify-between"><span>Rider no-show</span><span class="tabular-nums">1</span></li>
+              <li class="flex justify-between"><span>Address incomplete</span><span class="tabular-nums">1</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RIDER SUPPLY -->
+    <section aria-labelledby="riders-t" class="bento lg:col-span-7">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <div>
+          <h2 id="riders-t" class="bento-title">Rider supply</h2>
+          <p class="bento-sub">8 linked riders · reliability over a rolling 30 days</p>
+        </div>
+        <a href="#" class="press rounded-lg text-sm font-medium text-anchor hover:text-anchor-dark">Rider directory</a>
+      </div>
+
+      <div class="-mx-1 mt-4 flex gap-1 overflow-x-auto px-1 pb-1" role="group" aria-label="Filter riders">
+        <button type="button" data-filter="all" aria-pressed="true" class="press min-h-[36px] whitespace-nowrap rounded-full px-3.5 text-xs font-medium ring-1 ring-black/10 aria-pressed:bg-ink aria-pressed:text-white aria-pressed:ring-ink">All 8</button>
+        <button type="button" data-filter="active" aria-pressed="false" class="press min-h-[36px] whitespace-nowrap rounded-full px-3.5 text-xs font-medium ring-1 ring-black/10 aria-pressed:bg-ink aria-pressed:text-white aria-pressed:ring-ink">On delivery 3</button>
+        <button type="button" data-filter="approved" aria-pressed="false" class="press min-h-[36px] whitespace-nowrap rounded-full px-3.5 text-xs font-medium ring-1 ring-black/10 aria-pressed:bg-ink aria-pressed:text-white aria-pressed:ring-ink">Available 3</button>
+        <button type="button" data-filter="break" aria-pressed="false" class="press min-h-[36px] whitespace-nowrap rounded-full px-3.5 text-xs font-medium ring-1 ring-black/10 aria-pressed:bg-ink aria-pressed:text-white aria-pressed:ring-ink">On break 2</button>
+      </div>
+
+      <div class="stack mt-3">
+        <div class="skeleton divide-y divide-black/5" aria-hidden="true">
+          <div class="flex items-center gap-3 py-3"><div class="sk h-10 w-10 rounded-full"></div><div class="flex-1 space-y-2"><div class="sk h-3.5 w-32"></div><div class="sk h-3 w-24"></div></div><div class="sk h-3 w-24"></div></div>
+          <div class="flex items-center gap-3 py-3"><div class="sk h-10 w-10 rounded-full"></div><div class="flex-1 space-y-2"><div class="sk h-3.5 w-28"></div><div class="sk h-3 w-20"></div></div><div class="sk h-3 w-24"></div></div>
+          <div class="flex items-center gap-3 py-3"><div class="sk h-10 w-10 rounded-full"></div><div class="flex-1 space-y-2"><div class="sk h-3.5 w-36"></div><div class="sk h-3 w-24"></div></div><div class="sk h-3 w-24"></div></div>
+        </div>
+        <ul class="real divide-y divide-black/5" id="rider-list">
+          <li data-status="active" class="grid grid-cols-[40px_minmax(0,1fr)] items-center gap-x-3 gap-y-2 py-3 sm:grid-cols-[40px_minmax(0,1fr)_150px]">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold">MI</span>
+            <div class="min-w-0"><p class="truncate text-sm font-medium">Musa Ibrahim <span class="font-light text-ink-muted">· Lekki–Ajah</span></p><span class="pill mt-1 bg-anchor-soft text-anchor-dark"><span class="h-1.5 w-1.5 rounded-full bg-anchor"></span>On active delivery · DD-24861</span></div>
+            <div class="col-start-2 sm:col-start-auto"><div class="flex justify-between text-xs"><span class="font-semibold tabular-nums">97%</span><span class="font-light text-ink-muted">41 jobs</span></div><div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-full rounded-full bg-anchor" style="width: 97%"></div></div></div>
+          </li>
+          <li data-status="active" class="grid grid-cols-[40px_minmax(0,1fr)] items-center gap-x-3 gap-y-2 py-3 sm:grid-cols-[40px_minmax(0,1fr)_150px]">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold">SB</span>
+            <div class="min-w-0"><p class="truncate text-sm font-medium">Segun Bakare <span class="font-light text-ink-muted">· Mainland</span></p><span class="pill mt-1 bg-anchor-soft text-anchor-dark"><span class="h-1.5 w-1.5 rounded-full bg-anchor"></span>On active delivery · DD-24811</span></div>
+            <div class="col-start-2 sm:col-start-auto"><div class="flex justify-between text-xs"><span class="font-semibold tabular-nums">94%</span><span class="font-light text-ink-muted">33 jobs</span></div><div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-full rounded-full bg-anchor" style="width: 94%"></div></div></div>
+          </li>
+          <li data-status="approved" class="grid grid-cols-[40px_minmax(0,1fr)] items-center gap-x-3 gap-y-2 py-3 sm:grid-cols-[40px_minmax(0,1fr)_150px]">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold">KO</span>
+            <div class="min-w-0"><p class="truncate text-sm font-medium">Kehinde Ojo <span class="font-light text-ink-muted">· Ikeja–Yaba</span></p><span class="pill mt-1 bg-white text-ink-soft ring-1 ring-black/10"><svg class="h-3 w-3 text-anchor"><use href="#i-check"/></svg>Approved · available</span></div>
+            <div class="col-start-2 sm:col-start-auto"><div class="flex justify-between text-xs"><span class="font-semibold tabular-nums">91%</span><span class="font-light text-ink-muted">27 jobs</span></div><div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-full rounded-full bg-anchor" style="width: 91%"></div></div></div>
+          </li>
+          <li data-status="break" class="grid grid-cols-[40px_minmax(0,1fr)] items-center gap-x-3 gap-y-2 py-3 sm:grid-cols-[40px_minmax(0,1fr)_150px]">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold">TA</span>
+            <div class="min-w-0"><p class="truncate text-sm font-medium">Tunde Adewale <span class="font-light text-ink-muted">· Lekki Ph 1</span></p><span class="pill mt-1 bg-slate-100 text-ink-soft"><svg class="h-3 w-3"><use href="#i-clock"/></svg>On break until 3:30 PM</span></div>
+            <div class="col-start-2 sm:col-start-auto"><div class="flex justify-between text-xs"><span class="font-semibold tabular-nums">88%</span><span class="font-light text-ink-muted">52 jobs</span></div><div class="mt-1 h-1 rounded-full bg-slate-100"><div class="h-full rounded-full bg-anchor/70" style="width: 88%"></div></div></div>
+          </li>
+          <li data-status="approved" class="grid grid-cols-[40px_minmax(0,1fr)] items-center gap-x-3 gap-y-2 py-3 sm:grid-cols-[40px_minmax(0,1fr)_150px]">
+            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-xs font-semibold">AN</span>
+            <div class="min-w-0"><p class="truncate text-sm font-medium">Amaka Nnaji <span class="font-light text-ink-muted">· Surulere</span></p><span class="pill mt-1 bg-white text-ink-soft ring-1 ring-black/10"><svg class="h-3 w-3 text-anchor"><use href="#i-check"/></svg>Approved · available</span></div>
+            <div class="col-start-2 sm:col-start-auto"><p class="text-xs font-light text-ink-muted">New · 4 jobs, too few to score</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- NIPOST ADDRESS RESOLVER -->
+    <section id="resolver" aria-labelledby="nipost-t" class="bento scroll-mt-24 lg:col-span-5">
+      <h2 id="nipost-t" class="bento-title">NIPOST address resolver</h2>
+      <p class="bento-sub">Check an 11-character digital postcode. The format check runs on this device; nothing is sent until you resolve.</p>
+
+      <div id="pc-block" class="mt-5">
+        <label for="pc" class="text-sm font-medium">Digital postcode</label>
+        <div class="mt-2 flex gap-2">
+          <input id="pc" maxlength="11" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="e.g. LA4S8R2K7WM" aria-describedby="pc-state" class="field min-w-0 flex-1 font-mono uppercase tracking-[0.14em] placeholder:font-sans placeholder:normal-case placeholder:tracking-normal">
+          <button id="pc-resolve" type="button" disabled class="btn-anchor shrink-0">Resolve</button>
+        </div>
+        <!-- 11 progress ticks: fill as characters arrive -->
+        <div id="pc-ticks" class="mt-3 grid grid-cols-[repeat(11,minmax(0,1fr))] gap-1" aria-hidden="true">
+          <span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span><span class="h-1 rounded-full bg-slate-200"></span>
+        </div>
+        <p id="pc-state" aria-live="polite" class="mt-3 flex min-h-[28px] items-center gap-2 text-sm">
+          <span class="pill bg-slate-100 text-ink-soft"><svg class="h-3 w-3"><use href="#i-cpu"/></svg>Validate format locally</span>
+          <span class="font-light text-ink-muted">Waiting for 11 letters or numbers</span>
+        </p>
+        <div id="pc-result" class="mt-3 min-h-[76px] rounded-xl bg-canvas p-4 ring-1 ring-black/5">
+          <p class="text-sm font-light text-ink-muted">The resolved location appears here for you to confirm. We never swap in a nearby code.</p>
+        </div>
+      </div>
+
+      <div class="mt-5 border-t border-black/5 pt-5">
+        <button id="manual-toggle" type="button" role="switch" aria-checked="false" aria-controls="manual-fields" class="press flex min-h-[44px] w-full items-center justify-between gap-4 rounded-xl text-left">
+          <span><span class="block text-sm font-medium">Use manual address &amp; landmark</span><span class="block text-xs font-light text-ink-muted">For customers without a postcode, or if NIPOST is down</span></span>
+          <span class="relative h-6 w-11 shrink-0 rounded-full bg-slate-200 transition-colors duration-200 aria-checked:bg-anchor" data-track>
+            <span class="absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white shadow-hairline transition-transform duration-200" data-thumb></span>
+          </span>
+        </button>
+        <fieldset id="manual-fields" hidden class="mt-4 space-y-3">
+          <legend class="sr-only">Manual address</legend>
+          <label class="block"><span class="text-sm font-medium">Written address</span><input class="field mt-1.5" placeholder="House number, street, area"></label>
+          <label class="block"><span class="text-sm font-medium">Landmark</span><input class="field mt-1.5" placeholder="e.g. Opposite First Bank, Allen Avenue"></label>
+          <label class="block"><span class="text-sm font-medium">Gate &amp; access notes</span><input class="field mt-1.5" placeholder="Estate gate, floor, who to call"></label>
+        </fieldset>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- SCRIM shared by both sheets -->
+<div id="scrim" hidden class="fixed inset-0 z-40 bg-slate-900/20 opacity-0 transition-opacity duration-200" data-close></div>
+
+<!-- MOBILE NAV SHEET (glass) -->
+<aside id="nav-sheet" aria-label="Menu" aria-hidden="true" inert style="visibility: hidden" class="glass fixed inset-y-0 left-0 z-50 flex w-[85%] max-w-xs -translate-x-full flex-col border-r border-black/5 shadow-sheet transition-transform duration-300 ease-out">
+  <div class="flex h-16 items-center justify-between px-4">
+    <span class="text-[17px] font-semibold tracking-tight">DropDesk</span>
+    <button type="button" data-close class="btn-ghost w-11 px-0" aria-label="Close menu"><svg class="h-5 w-5"><use href="#i-x"/></svg></button>
+  </div>
+  <nav class="flex flex-col gap-1 px-3">
+    <a href="#" aria-current="page" class="press flex min-h-[44px] items-center rounded-xl bg-black/[0.05] px-3 text-sm font-medium">Workspace</a>
+    <a href="#" class="press flex min-h-[44px] items-center rounded-xl px-3 text-sm text-ink-soft hover:bg-black/[0.04]">Deliveries</a>
+    <a href="#" class="press flex min-h-[44px] items-center rounded-xl px-3 text-sm text-ink-soft hover:bg-black/[0.04]">Riders</a>
+    <a href="#" class="press flex min-h-[44px] items-center justify-between rounded-xl px-3 text-sm text-ink-soft hover:bg-black/[0.04]">Exceptions <span class="pill bg-alert-soft text-alert">2</span></a>
+    <a href="#" class="press flex min-h-[44px] items-center rounded-xl px-3 text-sm text-ink-soft hover:bg-black/[0.04]">Reports</a>
+    <a href="#" class="press flex min-h-[44px] items-center rounded-xl px-3 text-sm text-ink-soft hover:bg-black/[0.04]">Billing &amp; settings</a>
+  </nav>
+</aside>
+
+<!-- JOB SIDE SHEET (glass): right drawer on desktop, bottom sheet on mobile -->
+<aside id="job-sheet" role="dialog" aria-modal="true" aria-labelledby="js-id" aria-hidden="true" inert style="visibility: hidden" class="glass fixed inset-x-0 bottom-0 z-50 flex max-h-[85dvh] translate-y-full flex-col rounded-t-2xl border-t border-black/5 shadow-sheet transition-transform duration-300 ease-out md:inset-y-0 md:left-auto md:right-0 md:max-h-none md:w-[420px] md:translate-x-full md:translate-y-0 md:rounded-none md:border-l md:border-t-0">
+  <div class="mx-auto mt-2 h-1 w-10 rounded-full bg-slate-300 md:hidden" aria-hidden="true"></div>
+  <div class="flex items-start justify-between gap-4 px-6 pb-4 pt-4 md:pt-6">
+    <div>
+      <p id="js-id" class="font-mono text-sm text-ink-muted">DD-24817</p>
+      <p id="js-name" class="text-xl font-semibold tracking-tight">Chiamaka Obi</p>
+      <p id="js-area" class="text-sm font-light text-ink-muted">12 Admiralty Way, Lekki Phase 1</p>
+    </div>
+    <button type="button" data-close class="btn-ghost w-11 shrink-0 px-0" aria-label="Close"><svg class="h-5 w-5"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="flex-1 space-y-5 overflow-y-auto px-6 pb-6">
+    <p class="pill bg-white text-ink-soft ring-1 ring-black/10"><svg class="h-3 w-3"><use href="#i-clock"/></svg><span id="js-status">Rider no-show at pickup</span></p>
+    <ol class="space-y-4 border-l border-black/10 pl-4 text-sm">
+      <li class="relative"><span class="absolute -left-[21px] top-1.5 h-2.5 w-2.5 rounded-full bg-stage-attention ring-4 ring-white/70"></span><p class="font-medium">Latest update</p><p class="font-light text-ink-muted">2:15 PM · System</p></li>
+      <li class="relative"><span class="absolute -left-[21px] top-1.5 h-2.5 w-2.5 rounded-full bg-slate-300"></span><p class="font-medium">Offer accepted · window 2:00–4:00 PM</p><p class="font-light text-ink-muted">12:58 PM · Rider</p></li>
+      <li class="relative"><span class="absolute -left-[21px] top-1.5 h-2.5 w-2.5 rounded-full bg-slate-300"></span><p class="font-medium">Delivery created</p><p class="font-light text-ink-muted">12:40 PM · Bisi O.</p></li>
+    </ol>
+    <div class="grid grid-cols-2 gap-2">
+      <button type="button" class="btn-quiet"><svg class="h-4 w-4"><use href="#i-phone"/></svg>Call rider</button>
+      <button type="button" class="btn-anchor"><svg class="h-4 w-4"><use href="#i-swap"/></svg>Reassign</button>
+    </div>
+    <a href="../responsive/job-details.html" class="press block rounded-lg text-center text-sm font-medium text-anchor">Open full job record</a>
+  </div>
+</aside>
+
+<script>
+  // Data arrives fast on good networks; skeletons cover the gap without moving anything.
+  // ?loading keeps skeletons on for review.
+  const hold = new URLSearchParams(location.search).has('loading');
+  if (!hold) setTimeout(() => document.body.removeAttribute('data-loading'), 600);
+
+  // Sheets
+  const scrim = document.getElementById('scrim');
+  let openSheet = null, lastFocus = null;
+  function setSheet(sheet, open) {
+    sheet.setAttribute('aria-hidden', String(!open));
+    sheet.toggleAttribute('inert', !open);
+    clearTimeout(sheet._hide);
+    if (open) sheet.style.visibility = 'visible';
+    else sheet._hide = setTimeout(() => { sheet.style.visibility = 'hidden'; }, 300);
+    const desktop = matchMedia('(min-width: 768px)').matches;
+    if (sheet.id === 'nav-sheet') sheet.style.transform = open ? 'translateX(0)' : '';
+    else sheet.style.transform = open ? (desktop ? 'translateX(0)' : 'translateY(0)') : '';
+    if (open) { scrim.hidden = false; requestAnimationFrame(() => scrim.classList.replace('opacity-0', 'opacity-100')); }
+    else { scrim.classList.replace('opacity-100', 'opacity-0'); setTimeout(() => { if (!openSheet) scrim.hidden = true; }, 200); }
+  }
+  function open(id, trigger) {
+    if (openSheet) close();
+    const sheet = document.getElementById(id);
+    if (id === 'job-sheet' && trigger?.dataset.job) {
+      document.getElementById('js-id').textContent = trigger.dataset.job;
+      if (trigger.dataset.name) document.getElementById('js-name').textContent = trigger.dataset.name;
+      if (trigger.dataset.area) document.getElementById('js-area').textContent = trigger.dataset.area;
+      if (trigger.dataset.status) document.getElementById('js-status').textContent = trigger.dataset.status;
+    }
+    lastFocus = trigger; openSheet = sheet; setSheet(sheet, true);
+    sheet.querySelector('[data-close]')?.focus();
+  }
+  function close() { if (!openSheet) return; const s = openSheet; openSheet = null; setSheet(s, false); lastFocus?.focus(); }
+  document.addEventListener('click', (e) => {
+    const o = e.target.closest('[data-open]'); if (o) return open(o.dataset.open, o);
+    if (e.target.closest('[data-close]')) return close();
+    const d = e.target.closest('[data-dismiss]'); if (d) d.closest('[data-banner]').hidden = true;
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+  // Rider filter
+  document.querySelectorAll('[data-filter]').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-filter]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    document.querySelectorAll('#rider-list > li').forEach((li) => { li.hidden = b.dataset.filter !== 'all' && li.dataset.status !== b.dataset.filter; });
+  }));
+
+  // NIPOST: local format check (11 letters/digits). No network until Resolve.
+  const pc = document.getElementById('pc'), state = document.getElementById('pc-state'),
+        ticks = [...document.querySelectorAll('#pc-ticks span')], resolveBtn = document.getElementById('pc-resolve'),
+        result = document.getElementById('pc-result');
+  const pill = (cls, icon, text) => `<span class="pill ${cls}"><svg class="h-3 w-3"><use href="#${icon}"/></svg>${text}</span>`;
+  pc.addEventListener('input', () => {
+    const raw = pc.value.toUpperCase().replace(/\s/g, '');
+    const bad = /[^A-Z0-9]/.test(raw);
+    pc.value = raw;
+    ticks.forEach((t, i) => { t.className = 'h-1 rounded-full transition-colors duration-200 ' + (i < raw.length ? (bad ? 'bg-alert' : 'bg-anchor') : 'bg-slate-200'); });
+    const valid = !bad && raw.length === 11;
+    resolveBtn.disabled = !valid;
+    pc.setAttribute('aria-invalid', String(bad));
+    if (bad) state.innerHTML = pill('bg-alert-soft text-alert ring-1 ring-alert-line', 'i-x', 'Format invalid') + '<span class="font-light text-ink-soft">Letters and numbers only</span>';
+    else if (valid) state.innerHTML = pill('bg-anchor-soft text-anchor-dark', 'i-check', 'Format valid') + '<span class="font-light text-ink-soft">Checked on this device</span>';
+    else state.innerHTML = pill('bg-slate-100 text-ink-soft', 'i-cpu', 'Validate format locally') + `<span class="font-light text-ink-muted">${raw.length} of 11 characters</span>`;
+  });
+  resolveBtn.addEventListener('click', () => {
+    result.innerHTML = '<div class="space-y-2" aria-label="Resolving"><div class="sk h-3.5 w-3/4"></div><div class="sk h-3 w-1/2"></div></div>';
+    setTimeout(() => {
+      result.innerHTML = `<p class="flex items-center gap-2 text-sm font-medium"><svg class="h-4 w-4 text-anchor"><use href="#i-check-circle"/></svg>Is this the right place?</p>
+        <p class="mt-1 text-sm font-light text-ink-soft">Adeniran Ogunsanya St, Surulere LGA, Lagos</p>
+        <div class="mt-3 flex gap-2"><button type="button" class="btn-anchor px-3">Confirm</button><button type="button" class="btn-quiet px-3">Not correct</button></div>`;
+    }, 900);
+  });
+
+  // Manual fallback switch
+  const sw = document.getElementById('manual-toggle'), manual = document.getElementById('manual-fields'),
+        track = sw.querySelector('[data-track]'), thumb = sw.querySelector('[data-thumb]');
+  sw.addEventListener('click', () => {
+    const on = sw.getAttribute('aria-checked') !== 'true';
+    sw.setAttribute('aria-checked', String(on));
+    track.classList.toggle('bg-anchor', on); track.classList.toggle('bg-slate-200', !on);
+    thumb.style.transform = on ? 'translateX(20px)' : '';
+    manual.hidden = !on;
+  });
+</script>
+</body>
+</html>

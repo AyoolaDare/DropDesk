@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  [hidden] { display: none !important; }
+  fieldset { min-width: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+  }
+}
+
+@layer components {
+  /* Bento card: matte white, hairline ring, no heavy shadow. */
+  .bento { @apply rounded-2xl bg-white p-6 shadow-hairline ring-1 ring-black/5; }
+  .bento-title { @apply text-base font-semibold tracking-tight text-ink; }
+  .bento-sub { @apply text-sm font-light leading-relaxed text-ink-muted; }
+
+  /* Every pressable thing: 200ms transition + press-in. Buttons press to 95%, large cards to 98%. */
+  .press { @apply transition-all duration-200 ease-out active:scale-95 motion-reduce:active:scale-100; }
+  .press-card { @apply transition-all duration-200 ease-out hover:ring-black/10 hover:shadow-lift active:scale-[0.98] motion-reduce:active:scale-100; }
+
+  .btn { @apply press inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-4 text-sm font-medium tracking-tight focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-anchor disabled:pointer-events-none disabled:opacity-40; }
+  .btn-cta { @apply btn bg-anchor-cta text-white shadow-[0_1px_0_rgb(255_255_255/0.15)_inset] hover:brightness-110; }
+  .btn-anchor { @apply btn bg-anchor text-white hover:bg-anchor-dark; }
+  .btn-quiet { @apply btn bg-white text-ink ring-1 ring-black/10 hover:bg-slate-50 hover:ring-black/20; }
+  .btn-ghost { @apply btn text-ink-soft hover:bg-black/[0.04]; }
+
+  .pill { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium; }
+  .field { @apply h-12 w-full rounded-xl bg-white px-4 text-base text-ink ring-1 ring-black/10 transition-all duration-200 placeholder:font-light placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-anchor; }
+
+  /* Glass: only the sticky top bar and sliding sheets. */
+  .glass { @apply bg-white/70 backdrop-blur-md; }
+
+  /* Skeletons share the grid cell with real content, so loading never shifts layout. */
+  .stack { display: grid; }
+  .stack > * { grid-area: 1 / 1; }
+  .sk { @apply rounded-lg bg-slate-200/70 motion-safe:animate-pulse; }
+  [data-loading] .stack > .real { visibility: hidden; }
+  body:not([data-loading]) .stack > .skeleton { visibility: hidden; }
+  /* Inline values: become a same-size pulse bar while loading (text kept for layout, hidden by colour). */
+  [data-loading] .ld { @apply rounded-md bg-slate-200/70 text-transparent motion-safe:animate-pulse; }
+}
